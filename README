@@ -1,0 +1,11 @@
+=== Description
+
+Prototypes for actionscript.
+
+No documentation written right now.
+
+=== Usage
+
+#include "prototype.as"
+
+(prefferably in the first framescript in your .fla file)
