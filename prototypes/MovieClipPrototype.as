@@ -1,9 +1,12 @@
-class MovieClipPrototype
+class prototypes.MovieClipPrototype
 {
 	static function include()
 	{
 		MovieClip.prototype.addProperty( "isMouseOver", function() { return this.hitTest(_root._xmouse, _root._ymouse, true) }, null )
 
+		MovieClip.prototype.addProperty( "centerX", function() { return (Stage.width/2)-(this._width/2) }, null )
+		MovieClip.prototype.addProperty( "centerY", function() { return (Stage.height/2)-(this._height/2) }, null )
+		
 		MovieClip.prototype.drawRectangle = function( w:Number, h:Number, color:Number, alpha:Number )
 		{
 			color = color || 0x000000
@@ -149,24 +152,24 @@ class MovieClipPrototype
 				if( this[p] instanceof MovieClip || this[p] instanceof TextField) iterator.call( thisObject, this[p], p )
 			}
 		}
-
-		MovieClip.prototype.addProperty( "centerX", function() { return (Stage.width/2)-(this._width/2) }, null )
-		MovieClip.prototype.addProperty( "centerY", function() { return (Stage.height/2)-(this._height/2) }, null )
 	}
 	
 	static function remove()
 	{
-		MovieClip.prototype.drawRectangle = null
-		MovieClip.prototype.trueWidth = null
-		MovieClip.prototype.trueHeight = null
-		MovieClip.prototype.buttonFix = null
-		MovieClip.prototype.proportionalResize = null
-		MovieClip.prototype.fadeUp = null
-		MovieClip.prototype.fadeDown = null
-		MovieClip.prototype.onFadeDownComplete = null
-		MovieClip.prototype.onFadeUpComplete = null
-		MovieClip.prototype.fade = null
-		MovieClip.prototype.eachChild = null
-		
+	  delete MovieClip.prototype.isMouseOver
+		delete MovieClip.prototype.centerX
+		delete MovieClip.prototype.centerY
+    
+		delete MovieClip.prototype.drawRectangle
+		delete MovieClip.prototype.trueWidth
+		delete MovieClip.prototype.trueHeight 
+		delete MovieClip.prototype.buttonFix 
+		delete MovieClip.prototype.proportionalResize
+		delete MovieClip.prototype.fadeUp
+		delete MovieClip.prototype.fadeDown
+		delete MovieClip.prototype.onFadeDownComplete
+		delete MovieClip.prototype.onFadeUpComplete
+		delete MovieClip.prototype.fade
+		delete MovieClip.prototype.eachChild
 	}
 }
