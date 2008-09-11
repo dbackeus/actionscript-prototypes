@@ -2,10 +2,14 @@
 
 Prototypes for actionscript.
 
-No documentation written right now.
+In need to documentation.
+Under refactoring to include/remove prototypes through classes instead of using #include.
+Working on a test suite using my home grown work in progress LeanUnit framework (also on github). 
 
 === Usage
 
+Move the prototypes.as file to your .fla directory and put:
+
 #include "prototype.as"
 
-(prefferably in the first framescript in your .fla file)
+In the first framescript of your .fla file.
