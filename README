@@ -2,7 +2,7 @@
 
 Prototypes for actionscript.
 
-In need to documentation.
+In need of documentation.
 Under refactoring to include/remove prototypes through classes instead of using #include.
 Working on a test suite using my home grown work in progress LeanUnit framework (also on github). 
 
