@@ -1,0 +1,8 @@
+=== TODO
+
+.General
+- Documentation!
+- System to include and exlude specific functions
+
+.MovieClipPrototype
+- trueWidth and trueHeight could be properties
