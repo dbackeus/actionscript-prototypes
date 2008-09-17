@@ -25,11 +25,11 @@ class prototypes.Prototype
 				if( propertyName.indexOf('__get__') == 0 )
 				{
 					var realName = propertyName.substr(7)
-				  MovieClip.prototype.addProperty(realName, instance[propertyName], null)
+				  targetClass.prototype.addProperty(realName, instance[propertyName], null)
 				}
 				else
 				{
-					MovieClip.prototype[propertyName] = instance[propertyName]
+					targetClass.prototype[propertyName] = instance[propertyName]
 				}
 			}
 		}
@@ -43,7 +43,7 @@ class prototypes.Prototype
 		{
 			if( isCustomProperty(propertyName) )
 			{
-				delete MovieClip.prototype[propertyName]
+				delete targetClass.prototype[propertyName]
 			}
 		}
 	}
