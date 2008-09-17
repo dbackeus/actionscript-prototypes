@@ -2,8 +2,4 @@
 
 .General
 - Documentation!
-- System to include and exlude specific functions
 - Write tests for everything
-
-.MovieClipPrototype
-- trueWidth and trueHeight could be properties

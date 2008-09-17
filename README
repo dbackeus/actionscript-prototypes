@@ -8,8 +8,8 @@ Working on a test suite using my home grown work in progress LeanUnit framework 
 
 === Usage
 
-Move the prototypes.as file to your .fla directory and put:
+Move the proto.as file to your .fla directory and put:
 
-#include "prototype.as"
+#include "proto.as"
 
 In the first framescript of your .fla file.
