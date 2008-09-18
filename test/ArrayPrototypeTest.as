@@ -19,6 +19,11 @@ class test.ArrayPrototypeTest extends leanUnit.TestCase
 		ArrayPrototype.includeAll()
 	}
 	
+	function testEach()
+	{
+		fail('how to test each properly?')
+	}
+	
 	function testCollect() 
 	{
 		var names = persons.collect( function( element ) { return element.name } )

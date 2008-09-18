@@ -6,12 +6,14 @@ class prototypes.Prototype
 	{
 		MovieClipPrototype.includeAll()
 		ArrayPrototype.includeAll()
+		ObjectPrototype.includeAll()
 	}
 	
 	static function revertAll()
 	{
 		MovieClipPrototype.revertAll()
 		MovieClipPrototype.revertAll()
+		ObjectPrototype.revertAll()
 	}
 	
 	static function includeClass( prototypeClass, targetClass )
@@ -50,7 +52,7 @@ class prototypes.Prototype
 	
 	static function isCustomProperty( propertyName )
 	{
-		return propertyName != '__proto__' || propertyName != 'constructor'
+		return propertyName != '__proto__' && propertyName != 'constructor'
 	}
 	
 }

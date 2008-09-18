@@ -67,6 +67,7 @@ class test.MovieClipPrototypeTest extends leanUnit.TestCase
 		assertEqual( String(instance), String(Selection.getFocus()) )
 	}
 	
+	
 	function teardown()
 	{
 		instance.removeMovieClip()
