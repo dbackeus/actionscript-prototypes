@@ -104,6 +104,7 @@ Number.prototype.addProperty( "ago", function() { return new Date( new Date().va
 Number.prototype.addProperty( "fromNow", function() { return new Date( new Date().valueOf() + this ) }, null )
 
 Number.prototype.addProperty( "isEven", function() { return (this % 2 == 0)  }, null )
+Number.prototype.addProperty( "isOdd", function() { return (this % 2 != 0)  }, null )
 
 Number.prototype.round = function():Number
 {
