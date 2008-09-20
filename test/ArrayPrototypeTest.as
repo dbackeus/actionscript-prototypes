@@ -76,6 +76,11 @@ class test.ArrayPrototypeTest extends leanUnit.TestCase
 	
 	function testRandomize()
 	{
-		// How to test randomize properly??
+		fail( "How to test randomize?" )
+	}
+	
+	function testRemove()
+	{
+		fail( "Pending..." )
 	}
 }

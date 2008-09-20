@@ -1,6 +1,6 @@
 import prototypes.*
 
-dynamic class prototypes.ArrayPrototype
+dynamic class prototypes.ArrayPrototype extends Array
 {	
 	//-------------------------------------------------------------------
 	//	CLASS METHOD API
@@ -140,19 +140,33 @@ dynamic class prototypes.ArrayPrototype
 		return notRejected
 	}
 	
-	function randomize() 
+	function randomize():Array
 	{
-		var i = this.length;
-		if (i == 0) return;
+		var i = this.length
+		if (i == 0) return []
 		while (--i) 
 		{
-			var j = Math.floor(Math.random()*(i+1));
-			var tmp1 = this[i];
-			var tmp2 = this[j];
-			this[i] = tmp2;
-			this[j] = tmp1;
+			var j = Math.floor(Math.random()*(i+1))
+			var tmp1 = this[i]
+			var tmp2 = this[j]
+			this[i] = tmp2
+			this[j] = tmp1
 		}
-		return this;
+		return this
 	}
 	
+	function remove( o:Object ):Object
+	{
+		var l:Number = this.length;
+		while(l--) 
+		{
+			if(this[l] == o) 
+			{
+				var value = this[l]
+				this.splice(l, 1)
+				return value
+			}
+		}
+		return null
+	}
 }

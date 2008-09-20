@@ -4,16 +4,22 @@ class prototypes.Prototype
 {
 	static function includeAll()
 	{
-		MovieClipPrototype.includeAll()
 		ArrayPrototype.includeAll()
+		MovieClipPrototype.includeAll()
+		NumberPrototype.includeAll()
 		ObjectPrototype.includeAll()
+		StringPrototype.includeAll()
+		XMLNodePrototype.includeAll()
 	}
 	
 	static function revertAll()
 	{
+		ArrayPrototype.revertAll()
 		MovieClipPrototype.revertAll()
-		MovieClipPrototype.revertAll()
+		NumberPrototype.revertAll()
 		ObjectPrototype.revertAll()
+		StringPrototype.revertAll()
+		XMLNodePrototype.revertAll()
 	}
 	
 	static function includeClass( prototypeClass, targetClass )
