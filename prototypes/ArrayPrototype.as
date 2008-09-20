@@ -33,8 +33,14 @@ dynamic class prototypes.ArrayPrototype extends Array
 	//	PROTOTYPE METHODS
 	//-------------------------------------------------------------------
 	
+	function asdf()
+	{
+		trace( "asdf" )
+	}
+	
 	function each()
 	{
+			trace( "each")
 			var thisObject = this
 			var iterator = arguments[0]
 			if( arguments.length > 1 )
@@ -43,7 +49,7 @@ dynamic class prototypes.ArrayPrototype extends Array
 				iterator = arguments[1]
 			}
 
-		    var len = this.length;
+		  var len = this.length;
 
 			for( var i=0; i<len; i++ )
 			{
@@ -157,7 +163,7 @@ dynamic class prototypes.ArrayPrototype extends Array
 	
 	function remove( o:Object ):Object
 	{
-		var l:Number = this.length;
+		var l:Number = this.length
 		while(l--) 
 		{
 			if(this[l] == o) 
@@ -168,5 +174,18 @@ dynamic class prototypes.ArrayPrototype extends Array
 			}
 		}
 		return null
+	}
+	
+	function sum():Number
+	{
+		var result:Number = 0
+		
+		var l:Number = this.length
+		for( var i=0; i<l; i++ )
+		{
+			result += Number(this[i])
+		}
+		
+		return result
 	}
 }

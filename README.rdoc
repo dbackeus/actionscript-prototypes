@@ -1,10 +1,10 @@
-=== Description
+== Description
 
 Sweet prototypes for actionscript that extend core classes with stuff to make your life easier.
 
-In need of documentation and under quite heavy development.
+In need of documentation and is under quite heavy development.
 
-=== Usage
+== Usage
 
 Move the prototypes directory over to your .fla directory or add a classpath so your compiler can find it.
 
@@ -21,3 +21,24 @@ Include a specific function from a specific prototype by:
   MovieClipPrototype.include( "isMouseOver" )
   
 The last one remains quite untested at the moment so can't promise that it works.
+
+== Gotchas
+
+To use the extensions on Number directly on a number without using a variable you need to enclose it in parenthesis or the compiler will shoot syntax errors at you.
+
+  trace( 1.day.ago ) // Syntax error
+  trace( (1).day.ago ) // Works just fine!
+  
+  var n = 1
+  trace( n.day.ago ) // Also works
+  
+Sometimes you might want to use each on a non variableized array. The flash compiler has some truly weird behaviour when it comes to this. Here's the breakdown.
+
+  ['asdf', 'qwer'].each( function(element) { trace(element) } ) // Silent failure with adobe compiler, works with MTASC given that you specifically ended the previous line with a ;
+  
+  (['asdf', 'qwer'].each( function(element) { trace(element) } )) // Enclosing the whole thing in parenthesis makes it work on both compilers
+  
+  new Array('asdf', 'qwer').each( function(element) { trace(element) } ) // Works with the adobe compiler but not with MTASC
+  
+  var a = ['asdf', 'qwer]
+  a.each( function(element) { trace(element) } ) // Always works

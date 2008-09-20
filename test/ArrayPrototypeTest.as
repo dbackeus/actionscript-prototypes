@@ -21,7 +21,10 @@ class test.ArrayPrototypeTest extends leanUnit.TestCase
 	
 	function testEach()
 	{
-		fail('how to test each properly?')
+		persons.each( function(person) { person.age = 10 } )
+		
+		assertEqual( 10, persons[0].age )
+		assertEqual( 10, persons[3].age )
 	}
 	
 	function testCollect() 
@@ -81,6 +84,16 @@ class test.ArrayPrototypeTest extends leanUnit.TestCase
 	
 	function testRemove()
 	{
-		fail( "Pending..." )
+		var names = ["Jessica", "Angela", "Sharon"]
+		assertEqual( "Angela", names.remove("Angela") )
+		assertEqual( 2, names.length )
+		assertEqual( "Sharon", names[1] )
+	}
+	
+	function testSum()
+	{
+		var a = [5, 10, 15]
+		
+		assertEqual( 30, a.sum() )
 	}
 }
