@@ -18,4 +18,6 @@ Include all functions from a specific prototype by:
   MovieClipPrototype.includeAll()
   
 Include a specific function from a specific prototype by:
-  MovieClipPrototype.include( "" )
+  MovieClipPrototype.include( "isMouseOver" )
+  
+The last one remains quite untested at the moment so can't promise that it works.
