@@ -1,0 +1,21 @@
+=== Description
+
+Sweet prototypes for actionscript that extend core classes with stuff to make your life easier.
+
+In need of documentation and under quite heavy development.
+
+=== Usage
+
+Move the prototypes directory over to your .fla directory or add a classpath so your compiler can find it.
+
+Import the namespace before including:
+  import prototypes.*
+
+Include everything with:
+  Prototype.includeAll()
+  
+Include all functions from a specific prototype by:
+  MovieClipPrototype.includeAll()
+  
+Include a specific function from a specific prototype by:
+  MovieClipPrototype.include( "" )
