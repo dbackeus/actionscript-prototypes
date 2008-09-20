@@ -26,19 +26,27 @@ The last one remains quite untested at the moment so can't promise that it works
 
 To use the extensions on Number directly on a number without using a variable you need to enclose it in parenthesis or the compiler will shoot syntax errors at you.
 
-  trace( 1.day.ago ) // Syntax error
-  trace( (1).day.ago ) // Works just fine!
+  // Syntax error
+  trace( 1.day.ago )
   
+  // Works just fine!
+  trace( (1).day.ago )
+  
+  // Also works
   var n = 1
-  trace( n.day.ago ) // Also works
+  trace( n.day.ago )
   
 Sometimes you might want to use each on a non variableized array. The flash compiler has some truly weird behaviour when it comes to this. Here's the breakdown.
 
-  ['asdf', 'qwer'].each( function(element) { trace(element) } ) // Silent failure with adobe compiler, works with MTASC given that you specifically ended the previous line with a ;
+  // Silent failure with adobe compiler, works with MTASC given that you specifically ended the previous line with a ;
+  ['asdf', 'qwer'].each( function(element) { trace(element) } )
   
-  (['asdf', 'qwer'].each( function(element) { trace(element) } )) // Enclosing the whole thing in parenthesis makes it work on both compilers
+  // Enclosing the whole thing in parenthesis makes it work on both compilers
+  (['asdf', 'qwer'].each( function(element) { trace(element) } )) 
   
-  new Array('asdf', 'qwer').each( function(element) { trace(element) } ) // Works with the adobe compiler but not with MTASC
+  // Works with the adobe compiler but not with MTASC
+  new Array('asdf', 'qwer').each( function(element) { trace(element) } ) 
   
+  // Pre assigning the array to a variable always works
   var a = ['asdf', 'qwer]
-  a.each( function(element) { trace(element) } ) // Always works
+  a.each( function(element) { trace(element) } ) 
