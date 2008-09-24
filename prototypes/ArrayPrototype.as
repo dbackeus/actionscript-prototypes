@@ -33,24 +33,27 @@ dynamic class prototypes.ArrayPrototype extends Array
 	//	PROTOTYPE METHODS
 	//-------------------------------------------------------------------
 	
-	function asdf()
-	{
-		trace( "asdf" )
-	}
+	/**
+	 * Runs the passed in function on every element in the array.
+	 *
+	 * @param  iterator	the function to run
+	 * @param  scope		optional parameter to specify which scope to run the iterator in
+	 * @return      nothing
+	 * @example 
+	 * <pre> 
+	 * var names = ['David','Erik', 'Jessica']
+	 *
+	 * a.each( function(element, i) { 
+	 *		trace( i+": "+element )
+	 * })
+	 * </pre>
+	 */
 	
-	function each()
+	function each( iterator:Function, scope:Object )
 	{
-			trace( "each")
-			var thisObject = this
-			var iterator = arguments[0]
-			if( arguments.length > 1 )
-			{
-				thisObject = arguments[0]
-				iterator = arguments[1]
-			}
+			scope = scope || this
 
 		  var len = this.length;
-
 			for( var i=0; i<len; i++ )
 			{
 				iterator.call( thisObject, this[i], i )
