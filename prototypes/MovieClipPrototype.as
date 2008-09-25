@@ -40,6 +40,7 @@ dynamic class prototypes.MovieClipPrototype
 	@param height the height of the rectangle
 	@param color the color to use for fill (black by default)
 	@param alpha the alpha of the fill (100 by default)
+	@returns nothing
 	*/
 	
 	function drawRectangle( width:Number, height:Number, color:Number, alpha:Number )
@@ -54,6 +55,13 @@ dynamic class prototypes.MovieClipPrototype
 		this.endFill()
 	}
 
+	/**
+	This function resolves a bug involving V2 Components like the combobox messing up MovieClip mouse events. 
+	For more information see {@link http://www.webomatica.com/wordpress/2008/03/06/flash-tip-combobox-component-breaks-buttons}
+	
+	@returns nothing
+	*/
+
 	function buttonFix()
 	{
 		this.onPress = function()
@@ -62,28 +70,43 @@ dynamic class prototypes.MovieClipPrototype
 			Selection.setFocus( this )
 		}
 	}
-
-	function proportionalResize( w, h )
+	
+	/**
+	Resizes the movieclip while keeping the aspect ratio.
+	
+	@param width the maximum width to resize to
+	@param height the maximum height to resize to
+	@returns nothing
+	*/
+	
+	function proportionalResize( width:Number, height:Number )
 	{
 		var oldXScale = this._xscale
 		var oldYScale = this._yscale
 
 		this._xscale = this._yscale = 100
 
-		if( w > h )
+		if( width > height )
 		{
-			var percent = w / this._width
-			this._width = w
+			var percent = width / this._width
+			this._width = width
 			this._height *= percent
 		}
 		else
 		{
-			var percent = h / this._height
-			this._height = h
+			var percent = height / this._height
+			this._height = height
 			this._width *= percent
 		}
 	}
 
+	/**
+	Fades the _alpha property up to 100 and runs onFadeUpComplete() when done.
+	
+	@param speed the amount to increase the alpha on every interval
+	@returns nothing
+	*/
+	
 	function fadeUp( speed:Number )
 	{
 		if( this._alpha == 100 )
@@ -95,6 +118,13 @@ dynamic class prototypes.MovieClipPrototype
 		clearInterval( this.fadeId );
 		this.fadeId = setInterval( this, "fade", 30, 100, speed );
 	}
+
+	/**
+	Fades the _alpha property down to 0 and runs onFadeDownComplete() when done.
+	
+	@param speed the amount to decrease the alpha on every interval
+	@returns nothing
+	*/
 
 	function fadeDown( speed:Number )
 	{
@@ -108,16 +138,30 @@ dynamic class prototypes.MovieClipPrototype
 		this.fadeId = setInterval( this, "fade", 30, 0, speed );
 	}
 
+	/**
+	Runs after fadeUp() completes.
+	*/
+
 	function onFadeDownComplete() 
 	{
 		// override as desired
 	}
+	
+	/**
+	Runs after fadeDown() completes.
+	*/
 
 	function onFadeUpComplete()
 	{
 		// override as desired
 	}
-
+	
+	/**
+	Used internally through an interval by fadeUp and fadeDown
+	
+	@private
+	*/
+	
 	function fade( to:Number, difference:Number )
 	{
 		if( this._alpha < to )
@@ -141,22 +185,34 @@ dynamic class prototypes.MovieClipPrototype
 			}
 		}
 	}
-
-	function eachChild()
+	
+	/**
+	Runs the given iterator on every MovieClip and TextField inside the clip.
+	
+	@param iterator the function to run
+	@param scope the scope to run the iterator in
+	@returns nothing
+	@example
+	<code>
+	myClip.eachChild( function( child ) { child._visible = false } ) // Hides all clips inside myClip
+	</code>
+	*/
+	
+	function eachChild( iterator:Function, scope:Object )
 	{
-		var thisObject = this
-		var iterator = arguments[0]
-		if( arguments.length > 1 )
-		{
-			thisObject = arguments[0]
-			iterator = arguments[1]
-		}
+		scope = scope || this
 
 		for( var p in this )
 		{
-			if( this[p] instanceof MovieClip || this[p] instanceof TextField) iterator.call( thisObject, this[p], p )
+			if( this[p] instanceof MovieClip || this[p] instanceof TextField) iterator.call( scope, this[p], p )
 		}
 	}
+	
+	/**
+	Returns the original width of the movieclip (seeing through scaling etc).
+	
+	@returns a number
+	*/
 	
 	function get trueWidth():Number
 	{
@@ -173,6 +229,12 @@ dynamic class prototypes.MovieClipPrototype
 		return truth
 	}
 	
+	/**
+	Returns the original height of the movieclip (seeing through scaling etc).
+	
+	@returns a number
+	*/
+	
 	function get trueHeight():Number
 	{ 
 		var currentXScale = this._xscale
@@ -188,19 +250,37 @@ dynamic class prototypes.MovieClipPrototype
 		return truth
 	}
 	
+	/**
+	Returns true if the mouse is hovering the movieclip. Useful for custom mouse events when you just cant use the regular ones.
+	
+	@returns true or false
+	*/
+	
 	function get isMouseOver():Boolean
 	{
 		return this.hitTest(_root._xmouse, _root._ymouse, true)
 	}
 	
+	/**
+	Returns the _x coordinate that should put the moviclip in the center relative to Stage.
+	
+	@returns an integer
+	*/
+	
 	function get centerX():Number
 	{
-		return (Stage.width/2)-(this._width/2)
+		return int((Stage.width/2)-(this._width/2))
 	}
+	
+	/**
+	Returns the _y coordinate that should put the moviclip in the center relative to Stage.
+	
+	@returns an integer
+	*/
 	
 	function get centerY():Number
 	{
-		return (Stage.height/2)-(this._height/2)
+		return int((Stage.height/2)-(this._height/2))
 	}
 
 }
