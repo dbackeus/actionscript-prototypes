@@ -33,15 +33,24 @@ dynamic class prototypes.MovieClipPrototype
 	//	PROTOTYPE METHODS
 	//-------------------------------------------------------------------
 	
-	function drawRectangle( w:Number, h:Number, color:Number, alpha:Number )
+	/**
+	Draws a rectangle inside the movieclip based on the given parameters.
+	
+	@param width the width of the rectangle
+	@param height the height of the rectangle
+	@param color the color to use for fill (black by default)
+	@param alpha the alpha of the fill (100 by default)
+	*/
+	
+	function drawRectangle( width:Number, height:Number, color:Number, alpha:Number )
 	{
 		color = color || 0x000000
 		alpha = alpha || 100
 
 		this.beginFill( color, alpha )
-		this.lineTo( w, 0 )
-		this.lineTo( w, h )
-		this.lineTo( 0, h )
+		this.lineTo( width, 0 )
+		this.lineTo( width, height )
+		this.lineTo( 0, height )
 		this.endFill()
 	}
 
