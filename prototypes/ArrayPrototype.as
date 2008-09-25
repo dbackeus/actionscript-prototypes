@@ -56,7 +56,7 @@ dynamic class prototypes.ArrayPrototype extends Array
 		var len = this.length;
 		for( var i=0; i<len; i++ )
 		{
-			iterator.call( thisObject, this[i], i )
+			iterator.call( scope, this[i], i )
 		}
 	}
 	
@@ -108,7 +108,7 @@ dynamic class prototypes.ArrayPrototype extends Array
 		var l = this.length
 		for( var i=0; i<l; i++ )
 		{
-			if( this[i] == o )
+			if( this[i] == object )
 			{
 				return true
 			}
