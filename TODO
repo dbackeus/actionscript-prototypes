@@ -1,3 +1,7 @@
 == TODO
 
-- Documentation!
+.Documentation
+- NumberPrototype
+- ObjectPrototype
+- StringPrototype
+- XMLNodePrototype
