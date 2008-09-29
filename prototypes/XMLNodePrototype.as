@@ -33,6 +33,18 @@ dynamic class prototypes.XMLNodePrototype
 	//	PROTOTYPE METHODS
 	//-------------------------------------------------------------------
 	
+	/**
+	Rescues all undefined calls to a node and attempts to find a child node corresponding to the name of the property. This gives you quite an intuitive way to crawl through your xml objects.
+	
+	@returns a child node (or undefined if none exists)
+	@example
+	<code>
+	var xml = new XML('<root><child><baby value="test" /></child></root>')
+	
+	trace( xml.root.child.baby.attributes.value ) // "test"
+	</code>
+	*/
+	
 	function __resolve( name:String ):XMLNode
 	{
 		var l = this.childNodes.length;
